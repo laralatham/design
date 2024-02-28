@@ -1,4 +1,15 @@
+@use "sass:color";
+@use "sass:math";
+@use "../utilities" as *;
+@use "../config" as *;
 
+// ================
+// Buttons
+// ================
+
+
+// Button Color Mixin - (used on _buttons.scss)
+// -- Update Colors with Brand Colors -- //
 @mixin buttonColor (
   $_c-buttonColor: $c-storm,
   $_c-buttonHoverColor: transparent,
@@ -72,11 +83,10 @@
 // Default Button Selectors
 button,
 .type_event_button a,
-input[type=submit],
-input[type=button] {
+input[type="submit"],
+input[type="button"] {
   @extend %button;
 }
-
 
 // Reusable Button Classes
 button,

@@ -1,0 +1,114 @@
+@use "sass:color";
+@use "sass:math";
+@use "../utilities/breakpoints" as *;
+@use "../utilities/royall" as *;
+
+// ================
+// Variables
+// ================
+
+// ================
+// Fonts
+
+@include fontFace("fonts/fontawesome-webfont", "Icons");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+// Font Stacks
+$f-headlineFont: 'Roboto', Helvetica, Arial, sans-serif;
+$f-bodyFont: 'PT Serif', Georgia, Times, serif;
+$f-iconFont: "Icons";
+
+
+// ================
+// Colors
+
+// Brand Main Colors
+$c-storm: #105776;
+$c-sky: #19809F;
+
+// Brand Accent Colors
+$c-grape: #4b2f91;
+$c-olive: #395637;
+$c-fall: #b27232;
+$c-berry: #821e57;
+$c-gold: #e8c63a;
+
+// Basic Colors
+$c-lightGrey: #eee;
+$c-white: #fff;
+$c-black: #000;
+$c-text: #333;
+$c-error: red;
+$c-valid: green;
+$c-link: $c-sky;
+
+
+// ================
+// Common Dimensions
+$d-centerMaxWidth: $mq-1200;
+$d-centerWidth: 90%;
+$d-sectionPaddingSm: 4vw 0;
+$d-sectionPaddingLg: 6vw 0;
+
+$d-gridCalc: calc(#{math.div((100% - $d-centerWidth), 2)});
+$d-gridMaxWidth: math.div($d-centerMaxWidth, 1.8);
+
+$t-transition: all 0.25s ease-in-out;
+
+// ================
+// Icons 
+
+// Arrows
+// https://fontawesome.com/v4/icons/
+$i-chevronRight: "\f054";
+$i-arrowRight: "\f061";
+$i-angle_right: "\f105";
+$i-circleArrowRight: "\f18e";
+$i-triangleRight: "\f0da";
+
+// Check/Close
+$i-close: "\f00d";
+$i-closeCircle: "\f057";
+$i-closeCircleOutline: "\f05c";
+$i-check: "\f00c";
+$i-checkCircle: "\f058";
+$i-checkCircleOutline: "\f05d";
+
+// Other
+$i-errorCircle: "\f06a";
+$i-lightBulb: "\f0eb";
+$i-mapMarker: "\f041";
+$i-quoteLeft: "\f10d";
+$i-quoteRight: "\f10e";
+$i-bookmark: "\f02e";
+$i-laptop: "\f109";
+$i-university: "\f19c";
+$i-gradCap: "\f19d";
+$i-users: "\f0c0";
+$i-star: "\f005";
+$i-thumbTack: "\f08d";
+$i-bullhorn: "\f0a1";
+$i-flag: "\f024";
+$i-heart: "\f004";
+
+// Contact
+$i-phone: "\f095";
+$i-phoneSign: "\f098";
+$i-mobilePhone: "\f10b";
+$i-email: "\f0e0";
+$i-emailOutline: "\f003";
+
+
+$i-arrowRight: "\f054";
+$i-errorCircle: "\f06a";
+$i-close: "\f00d";
+$i-check: "\f00c";
+$i-lightBulb: "\f0eb";
+$i-envelope: "\f0e0";
+$i-cloudDownload: "\f0ed";
+$i-trophy: "\f091";
+$i-mapMarker: "\f041";
+$i-instagram: "\f16d";
+$i-linkedin: "\f0e1";
+$i-angleDown: "\f107";

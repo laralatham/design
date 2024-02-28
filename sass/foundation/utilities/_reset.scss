@@ -1,3 +1,11 @@
+*,
+*::before,
+*::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: inherit;
+}
+
 html,
 body,
 p,
@@ -43,14 +51,18 @@ textarea {
 
 html {
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  -webkit-text-size-adjust: 100%;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  text-size-adjust: 100%;
 }
 
 img,
@@ -110,10 +122,8 @@ th {
   visibility: hidden;
 }
 
-// Correct `block` display not defined for `main` in IE 11.
-
-main {
-  display: block;
+.nobreak {
+  white-space: nowrap;
 }
 
 // Prevent `sub` and `sup` elements from affecting the line height in
@@ -156,7 +166,7 @@ select {
 button,
 [type="reset"],
 [type="submit"] {
-  -webkit-appearance: button;
+  appearance: button;
 }
 
 // Remove the inner border and padding in Firefox.
@@ -178,17 +188,11 @@ button:-moz-focusring,
   outline: 1px dotted ButtonText;
 }
 
-// Remove the default vertical scrollbar in IE.
-
-textarea {
-  overflow: auto;
-}
-
 // Correct the odd appearance in Chrome and Safari.
 // Correct the outline style in Safari.
 
 [type="search"] {
-  -webkit-appearance: textfield;
+  appearance: textfield;
   outline-offset: -2px;
 }
 
@@ -196,14 +200,14 @@ textarea {
 
 [type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
-  -webkit-appearance: none;
+  appearance: none;
 }
 
 // Correct the inability to style clickable types in iOS and Safari.
 // Change font properties to `inherit` in Safari.
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button;
+  appearance: button;
   font: inherit;
 }
 

@@ -1,0 +1,29 @@
+@use "sass:color";
+@use "sass:math";
+@use "../utilities" as *;
+@use "../config" as *;
+
+// ================
+// Buttons
+// ================
+
+// ================
+// Logos
+
+%logo {
+  display: block;
+  margin: 0 auto;
+  text-indent: -9999em;
+  color: black;
+
+  &::after {
+    display: none;
+  }
+}
+
+.logo {
+	@extend %logo;
+  @include fluidRem("width", 15rem, 18.75rem);
+  @include fluidRem("height", 5.45rem, 6.8125rem);
+  background: url("img/laralatham-logo.svg") no-repeat center center / contain;
+}

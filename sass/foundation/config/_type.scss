@@ -1,8 +1,11 @@
+@use "sass:color";
+@use "sass:math";
+@use "variables" as *;
+@use "../utilities" as *;
+
 // ================
 // Typography
 // ================
-
-
 
 // ================
 // Universal Elements
@@ -14,8 +17,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 // ================
 // Root
 
@@ -24,6 +25,7 @@ html {
   font-family: $f-bodyFont;
   color: $c-text;
   scroll-behavior: smooth;
+  text-wrap: pretty;
 }
 
 body {
@@ -37,7 +39,6 @@ body {
     // font-size: 1.125rem;
   }
 }
-
 
 // ================
 // Headlines
@@ -84,8 +85,6 @@ h6 {
   @include fluidRem("font-size", 1.25rem, 1.5rem);
 }
 
-
-
 // ================
 // Body Copy
 
@@ -94,7 +93,7 @@ ul,
 ol,
 blockquote,
 address {
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
   font-style: normal;
 }
 
@@ -102,11 +101,37 @@ ul,
 ol {
   margin: 1rem 0 1rem 1.5rem;
 
+  li {
+  }
 }
+
+// @include fancyList on ul element. 
+// Use to add extra styling to list elements.
+@mixin fancyList{
+  margin:0;
+
+  li{
+    list-style: none;
+    display:flex;
+    gap:.5rem;
+  
+    &:before{
+      content:$i-check;
+      font-family: $f-iconFont;
+      display:inline-block;
+      position:relative;
+    }
+
+    &~li{
+      margin-top:.5rem;
+    }
+  }
+}
+
 
 a {
   color: $c-link;
-  @extend %transition;
+  transition: $t-transition;
 
   &:hover,
   &:focus {
@@ -115,14 +140,22 @@ a {
   }
 }
 
+// @include reversed-link on <a> element
+@mixin reversed-link{
+  color:white;
+
+  &:hover,
+  &:focus {
+    color: white;
+  }
+}
+
 %small,
 small,
 .copyright {
-  font-size: .875em;
+  font-size: 0.875em;
   font-style: italic;
 }
-
-
 
 // ================
 // Other Type Styles

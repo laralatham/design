@@ -1,13 +1,17 @@
+@use "sass:color";
+@use "sass:math";
+@use "variables" as *;
+@use "type" as *;
+@use "../utilities" as *;
+
 // ================
 // Layout
 // ================
 
-
-
 // ================
 // Viewport Rules
 
-@-ms-viewport {
+@viewport {
   width: device-width;
   zoom: 1;
 }
@@ -17,12 +21,10 @@
   zoom: 1;
 }
 
-
-
 // ================
 // Layout Modules
 
-@mixin center($_maxWidth: $mq-1200, $_width: 90%) {
+@mixin center ($_maxWidth: $d-centerMaxWidth, $_width: $d-centerWidth) {
   width: $_width;
   max-width: $_maxWidth;
   margin: auto;
@@ -30,41 +32,57 @@
 
 %center,
 .center {
-  @include center();
+  @include center;
 }
 
-%transition {
-	transition: all 0.25s ease-in-out;
+@mixin fullWidth () {
+  max-width: none;
+  width: 100%;
 }
 
-.mob-hide {
-  @media (max-width: maxMQ($mq-600)) {
-    display: none;
+// Container Style Mixin
+@mixin containerStyle (
+  $_c-backgroundColor: white,
+  $_x-border: "null",
+  $_c-borderColor: "null",
+  $_x-boxShadow: "null",
+  $_x-boxShadowColor: rgba($c-black, 0.2)
+) {
+
+  background: $_c-backgroundColor;
+  @include fluidRem("padding", 1.25rem 1.5rem, 2rem 2.25rem, $mq-300, $mq-800);
+
+  @if $_x-border == "yes" {
+    border: 1px solid $_c-borderColor;
+  }
+
+  @if $_x-boxShadow == "yes" {
+    box-shadow: 0 0 15px $_x-boxShadowColor;
   }
 }
 
-// ================
-// Major Layout Elements
+// Add after containerStyle Mixin
+@mixin containerReversed{
 
-%logo {
-  display: block;
-  margin: 0 auto;
-  text-indent: -9999em;
-  color: $c-black;
-
-  &::after {
-  	display: none;
+  a{
+    @include reversed-link;
+  }
+  
+  h1, h2, h3, h4, h5, h6, p, li, ul, label, address, div {
+    color:white;
   }
 }
 
-.logo {
-	@extend %logo;
-  @include fluidRem("width", 15rem, 18.75rem);
-  @include fluidRem("height", 5.45rem, 6.8125rem);
-  background: url("img/laralatham-logo.svg") no-repeat center center / contain;
-}
 
-// Header
+// CSS Box Model - add padding or margin spacing. 2x spacing on larger screens.
+@mixin boxSpacing (
+  $_padding-top: 2rem, 
+  $_padding-bottom: 2rem,
+  $_spacingType: "padding"
+  ) {
+    
+  @include fluidRem($_spacingType, $_padding-top 0 $_padding-bottom, ($_padding-top * 2) 0 ($_padding-bottom * 2));
+}
 
 .header {
 	@include fluidRem("padding", 1rem 0, 2rem 0);
@@ -142,4 +160,3 @@
     }
   }
 }
-
