@@ -1,0 +1,115 @@
+// ================
+// Buttons
+// ================
+
+
+@mixin buttonColor($_c-buttonColor, $_c-buttonTextColor, $_c-buttonBorderColor: "null", $_c-buttonFill: "true") {
+  $_c-buttonHoverColor: lighten($_c-buttonColor, 12%);
+  transition: all 0.25s ease-in-out;
+  border: 0;
+  outline: 0;
+
+  @if brightness($_c-buttonColor) > 50% {
+    $_c-buttonHoverColor: darken($_c-buttonColor, 10%);
+  }
+
+  @if $_c-buttonFill == "true" {
+    color: $_c-buttonTextColor;
+    background: $_c-buttonColor;
+
+    &:hover,
+    &:focus {
+      color: $_c-buttonTextColor;
+      background: $_c-buttonHoverColor;
+    }
+
+  } @else {
+    color: $_c-buttonColor;
+    border: 2px solid $_c-buttonBorderColor;
+
+    &:hover,
+    &:focus {
+      border-color: $_c-buttonColor;
+      // box-shadow: inset 0px 0px 0px 2px $_c-buttonColor;
+    }
+  }
+
+}
+
+// ================
+// Extendable Placeholders
+
+// Base Button Styles
+%button {
+  @include buttonColor($c-blue, $c-white, "null", "true");
+  @include fluidRem("font-size", 1rem, 1.15rem);
+  @include transition(all 0.25s ease-in-out);
+  display: block;
+  width: 100%;
+  padding: 0.65em 1.25em;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: $f-headlineFont;
+  font-weight: bold;
+  border: 0;
+  border-radius: 4px;
+  letter-spacing: 0.01em;
+  outline: 0;
+  line-height: 1.2;
+
+  @media (min-width: $mq-600) {
+    display: inline-block;
+    width: auto;
+  }
+}
+
+
+// Major Buttons
+%major-button {
+  // @include buttonColor($c-lime, $c-purple, "null", "true");
+  @include fluidRem("font-size", 1.25rem, 1.5rem);
+}
+
+
+// Minor Buttons
+%minor-button {
+  // @include buttonColor($c-doveGrey, $c-white, "null", "true");
+  @include fluidRem("font-size", 0.78rem, 0.975rem);
+  padding: 0.35em 0.65em;
+}
+
+
+// ================
+// Application of Placeholders
+
+// Default Button Selectors
+button,
+.type_event_button a,
+input[type=submit],
+input[type=button] {
+  @extend %button;
+}
+
+
+// Reusable Button Classes
+button,
+a,
+input {
+
+  &.button,
+  .button & {
+    @extend %button !optional;
+  }
+
+  &.major-button,
+  .major-button & {
+    @extend %major-button !optional;
+  }
+
+  &.minor-button,
+  .minor-button & {
+    @extend %minor-button !optional;
+  }
+}

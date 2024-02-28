@@ -1,0 +1,54 @@
+// ================
+// Custom Mixins
+// ================
+
+
+@mixin containerStyle ($_c-backgroundColor: $c-white) {
+	background: $_c-backgroundColor;
+	@include fluidRem("padding", 0.75rem 1rem, 1.5rem 1.75rem);
+}
+
+@mixin addHighlight ($_c-bgColor: $c-teal, $_c-fontColor: $c-white) {
+	background: $_c-bgColor;
+	display: inline;
+	color: $_c-fontColor;
+	box-shadow: 10px 0 0 $_c-bgColor, -10px 0 0 $_c-bgColor;
+	box-decoration-break: clone;
+}
+
+@keyframes slideInLeft {
+  from {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@include keyframes(fadeInLeft) {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(-2.5rem, 0, 0);
+    transform: translate3d(-2.5rem, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
