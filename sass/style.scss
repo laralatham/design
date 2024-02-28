@@ -3,111 +3,82 @@
 @use "foundation/config" as *;
 @use "foundation/components" as *;
 @use "foundation/utilities" as *;
-
-
-// ================
-// Landing Page Styles
-// ================
-
-// ================
-// Nav
-
-.main-nav {
-	@include fluidRem("padding", 1.5rem 0, 2rem 0);
-
-	ul {
-		margin: 0;
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		justify-content: center;
-
-		li {
-			text-align: center;
-			list-style-type: none;
-
-			a {
-				color: $c-storm;
-				font-family: $f-headlineFont;
-				text-transform: uppercase;
-				letter-spacing: 0.04em;
-				@include fluidRem("font-size", 0.875rem, 0.9125rem);
-				text-decoration: none;
-				text-align: center;
-				@include fluidRem("padding", 0.25rem 0, 0.5rem 0);
-
-				&:hover,
-				&:focus {
-					color: $c-sky;
-					border-bottom: 3px solid $c-sky;
-				}
-			}
-		}
-	}
-
-	@media (min-width: $mq-600) {
-		ul {
-			grid-template-columns: repeat(4, 1fr);
-		}
-	}
-
-}
+@use "foundation/shared-sections" as *;
 
 
 // ================
 // About Me
 
 .lp-about {	
-	background: linear-gradient(0deg, transparent 0%, rgba(255,255,255,1) 100%), $c-white url('img/bg-icon-40.svg') repeat center / 2rem;
-	position: relative;
+	background: $c-storm linear-gradient(140deg, rgba(lighten($c-storm,2%),1) 0%, rgba(lighten($c-storm,2%),1) 20%, rgba($c-storm,1) 20%, rgba($c-storm,1) 75%, rgba(lighten($c-storm,2%),1) 75%, rgba(lighten($c-storm,2%),1) 100%);
 	border-top: 1px solid $c-lightGrey;
-	padding: 5vw 0;
-	overflow: hidden;
+	@include boxSpacing(2.5rem, 2.5rem);
+	@include containerReversed;
 
-	>.center {
+	.lp-about-content {
+		position: relative;
+
 		&::after {
 			content: '';
 			display: block;
-			background: url('img/lara-andy-crop.jpg') center 20% / cover;
-			height: 40vw;
+			background: url('img/img-lara.jpg') center 40% / cover;
+			height: 50vw;
 			min-height: 12rem;
 			width: 100%;
 			border: 1px solid $c-lightGrey;
 			margin: 2rem auto 0;
+			z-index: 2;
+		}
+
+		
+		.lp-text-wrap {
+			max-width: $mq-800;
+			margin: auto;
+	
+			.small {
+				margin: -0.5rem 0 0.5rem;
+			}
 		}
 	}
 
-	.lp-text-wrap {
-		padding: 2vw 0;
-		max-width: $mq-800;
-		margin: auto;
-	}
+	@media (min-width: $mq-700) {
 
-	@media (min-width: $mq-600) {
-		>.center {
+		.lp-about-content {
 			display: grid;
-			grid-template-columns: 1fr 2fr;
+			grid-template-columns: 1fr 1.25fr;
 			column-gap: 1rem;
-
-			&::after {
-				display: none;
-			}
+			max-width: $mq-900;
+			margin: auto;
+			@include fluidRem("grid-gap", 1rem, 3rem);
 
 			&::before {
 				content: '';
 				display: block;
-				background: url('img/lara-andy-crop.jpg') center top / cover;
 				height: 100%;
 				width: 100%;
-				border: 1px solid $c-lightGrey;
+				background: rgba($c-white, .1);
+				position: absolute;
+				left: -1rem;
+				bottom: -1rem;
+				grid-column: 1/2;
+				grid-row: 1/2;
+				// z-index: -1;
 			}
-		}
-	}
+	
 
-	@media (min-width: $mq-800) {
+			&::after {
+				background-position: center 10%;
+				height: 100%;
+				grid-column: 1/2;
+				grid-row: 1/2;
+				margin: 0;
+			}
 
-		>.center {
-			column-gap: 3rem;
-		}
+			.lp-text-wrap {
+				padding: 2vw 0;
+				grid-column: 2/3;
+			}
+		}	
 	}
 }
 
@@ -166,64 +137,6 @@
 		}
 	}
 }
-
-// ================
-// Stats
-
-.lp-stats {
-	background: $c-storm linear-gradient(140deg, rgba(lighten($c-storm,2%),1) 0%, rgba(lighten($c-storm,2%),1) 20%, rgba($c-storm,1) 20%, rgba($c-storm,1) 75%, rgba(lighten($c-storm,2%),1) 75%, rgba(lighten($c-storm,2%),1) 100%);
-	padding: 4vw 0;
-
-	.lp-stats-list {
-		margin: 0;
-		
-
-		li {
-			list-style-type: none;
-			color: $c-white;
-			text-align: center;
-			padding: 1rem;
-			display: grid;
-			grid-template-rows: 1fr 0.5fr;
-			grid-template-columns: 1fr;
-
-			&.stat-athlete,
-			&.stat-location {
-				&::before {
-					font-family: $f-iconFont;
-					@include fluidRem("font-size", 3.75rem, 7.5rem);
-					line-height: 1;
-					display: block;
-					margin: 0 auto;
-					color: $c-gold;
-				}
-			}
-			&.stat-athlete {
-				&::before {
-					content: $i-trophy;
-				}
-			} 
-
-			&.stat-location {
-				&::before {
-					content: $i-mapMarker;
-				}
-			}
-		}
-
-		@media (min-width: $mq-400) {
-			display: grid;
-			grid-template-columns: repeat(2, 1fr);
-			grid-template-rows: repeat(2, 1fr);
-		}
-
-		@media (min-width: $mq-800) {
-			grid-template-columns: repeat(4, 1fr);
-			grid-template-rows: 1fr;
-		}
-	}
-}
-
 
 // ================
 // Projects
@@ -625,10 +538,6 @@
 					margin-top: 0;
 					
 				}
-
-				// &::after {
-				// 	height: 50vw;
-				// }
 			}
 		}
 	}

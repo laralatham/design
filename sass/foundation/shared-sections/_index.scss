@@ -1,0 +1,10 @@
+// ================
+// Sass Index
+// ================
+
+// imports below partials into any file that calls this folder
+@use "contact";
+@use "footer";
+@use "header-nav";
+@use "stats";
+@use "testimonials";

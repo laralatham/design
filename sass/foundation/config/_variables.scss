@@ -57,6 +57,10 @@ $d-gridMaxWidth: math.div($d-centerMaxWidth, 1.8);
 $t-transition: all 0.25s ease-in-out;
 
 // ================
+// Backgrounds
+$bg-icons: linear-gradient(0deg, transparent 0%, rgba(255,255,255,1) 100%), $c-white url('img/bg-icon-40.svg') repeat center / 2rem;
+
+// ================
 // Icons 
 
 // Arrows

@@ -1,0 +1,67 @@
+@use "sass:color";
+@use "sass:math";
+@use "../config" as *;
+@use "../utilities" as *;
+@use "../components" as *;
+
+// ================
+// Styles used by pages
+// ================
+
+// ================
+// Stats Section
+
+.lp-stats {
+	// background: $c-storm linear-gradient(140deg, rgba(lighten($c-storm,2%),1) 0%, rgba(lighten($c-storm,2%),1) 20%, rgba($c-storm,1) 20%, rgba($c-storm,1) 75%, rgba(lighten($c-storm,2%),1) 75%, rgba(lighten($c-storm,2%),1) 100%);
+  background: $c-sky;
+	padding: 4vw 0;
+
+	.lp-stats-list {
+		margin: 0;
+		
+
+		li {
+			list-style-type: none;
+			color: $c-white;
+			text-align: center;
+			padding: 1rem;
+			display: grid;
+			grid-template-rows: 1fr 0.5fr;
+			grid-template-columns: 1fr;
+
+			&.stat-athlete,
+			&.stat-location {
+				&::before {
+					font-family: $f-iconFont;
+					@include fluidRem("font-size", 3.75rem, 7.5rem);
+					line-height: 1;
+					display: block;
+					margin: 0 auto;
+					color: $c-gold;
+				}
+			}
+			&.stat-athlete {
+				&::before {
+					content: $i-trophy;
+				}
+			} 
+
+			&.stat-location {
+				&::before {
+					content: $i-mapMarker;
+				}
+			}
+		}
+
+		@media (min-width: $mq-400) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(2, 1fr);
+		}
+
+		@media (min-width: $mq-800) {
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-rows: 1fr;
+		}
+	}
+}

@@ -1,0 +1,59 @@
+@use "sass:color";
+@use "sass:math";
+@use "../config" as *;
+@use "../utilities" as *;
+@use "../components" as *;
+
+// ================
+// Styles used by pages
+// ================
+
+// ================
+// Header
+
+.header {
+	@include fluidRem("padding", 1rem 0, 2rem 0);
+}
+
+// ================
+// Navigation
+
+.main-nav {
+	@include fluidRem("padding", 1.5rem 0, 2rem 0);
+
+	ul {
+		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		justify-content: center;
+
+		li {
+			text-align: center;
+			list-style-type: none;
+
+			a {
+				color: $c-storm;
+				font-family: $f-headlineFont;
+				text-transform: uppercase;
+				letter-spacing: 0.04em;
+				@include fluidRem("font-size", 0.875rem, 0.9125rem);
+				text-decoration: none;
+				text-align: center;
+				@include fluidRem("padding", 0.25rem 0, 0.5rem 0);
+
+				&:hover,
+				&:focus {
+					color: $c-sky;
+					border-bottom: 3px solid $c-sky;
+				}
+			}
+		}
+	}
+
+	@media (min-width: $mq-600) {
+		ul {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
+}

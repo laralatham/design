@@ -1,0 +1,82 @@
+@use "sass:color";
+@use "sass:math";
+@use "../config" as *;
+@use "../utilities" as *;
+@use "../components" as *;
+
+// ================
+// Styles used by pages
+// ================
+
+// ================
+// Footer
+
+.footer {
+  background: $c-storm;
+  color: $c-white;
+	@include fluidRem("padding", 1rem 0, 1.5rem 0);
+  text-align: center;
+
+	.footer-links {
+    margin: 0.5rem auto 0;
+    display: flex;
+    justify-content: center;
+
+		li {
+			list-style-type: none;
+
+      ~ li {
+        margin-left: 1rem;
+      }
+
+      a {
+        color: transparent;
+        text-decoration: none;
+        font-size: 0;
+
+        .link-text {
+          display: none;
+        }
+        
+        &::before {
+          height: auto;
+          width: auto;
+          color: $c-white;
+          font-family: $f-iconFont;
+          display: block;
+          @include fluidRem("font-size", 1.25rem, 2rem);
+        }
+
+        &.link-instagram {
+          &::before {
+            content: $i-instagram;
+          }
+        }
+
+        &.link-linkedin {
+          &::before {
+            content: $i-linkedin;
+          }
+        }
+
+        &:hover,
+        &:focus {
+          &::before {
+            color: $c-gold;
+          }
+        }
+      }
+		}
+	}
+
+  @media (min-width: $mq-400) {
+    .footer-content {
+      display: flex;
+      align-items: center;
+
+      .footer-links {
+        margin: 0 0 0 auto;
+      }
+    }
+  }
+}
