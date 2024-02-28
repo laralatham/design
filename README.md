@@ -1,2 +1,0 @@
-# design
-Lara Latham Design
