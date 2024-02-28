@@ -1,13 +1,12 @@
 // ================
-// Modal Windows (Marketo)
+// Modal Windows (ACS)
 // ================
-
 
 
 // ================
 // Modal Format Selection
-$x-modalFormat: 'marketo'; // 'rms', 'marketo', or 'rope'
 
+$x-modalFormat: 'lightbox'; // 'rms', 'acs', or 'rope'
 
 
 // ================
@@ -38,28 +37,27 @@ $x-modalFormat: 'marketo'; // 'rms', 'marketo', or 'rope'
 }
 
 %modal-close {
+  display: block;
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  width: auto;
-  height: auto;
+  top: .75rem;
+  right: .75rem;
+  width: 2rem;
+  height: 2rem;
   margin: 0;
   padding: 0;
   color: transparent;
   border: 0;
   background: none;
   font-size: 0;
-  text-decoration: none;
-  box-shadow: none;
 
   &::after {
-    @include transition(all 0.25s ease-in-out);
     content: $i-close;
     color: $c-link;
     font-family: $f-iconFont;
     font-size: 2rem;
     line-height: 1;
     box-shadow: none;
+    transition: all 0.25s ease-in-out
   }
 
   &:hover,
@@ -78,9 +76,7 @@ $x-modalFormat: 'marketo'; // 'rms', 'marketo', or 'rope'
   }
 }
 
-@if $x-modalFormat == 'fancybox' {
-
-
+@if $x-modalFormat == 'lightbox' {
 
   // ================
   // Fancybox Modals
@@ -102,37 +98,31 @@ $x-modalFormat: 'marketo'; // 'rms', 'marketo', or 'rope'
     height: auto !important;
   }
 
-  .fancybox-close {
+  .lb-close {
     @extend %modal-close;
+  }
+
+  .lb-data {
+    color: $c-white !important;
   }
 
 }
 
-@elseif $x-modalFormat == 'marketo' {
+@elseif $x-modalFormat == 'acs' {
 
   // ================
-  // Marketo - Hide Modal Content By Default
-
-  .modal-text {
-    display: none;
-  }
-
-  // ================
-  // Marketo - Fancybox Modals
+  // ACS - Fancybox Modals
 
   .fancybox-bg {
     @extend %modal-overlay;
   }
 
-  .fancybox-stage {
+  .fancybox-content {
+    @extend %modal-wrap;
+    @extend %modal-skin;
+    position: relative !important;
 
-    .fancybox-slide > * {
-      @extend %modal-wrap;
-      @extend %modal-skin;
-      position: relative !important;
-    }
-
-    .mktoSnippet {
+    & > [tabindex="0"] {
       outline: 0;
     }
 
@@ -149,8 +139,6 @@ $x-modalFormat: 'marketo'; // 'rms', 'marketo', or 'rope'
 }
 
 @elseif $x-modalFormat == 'rope' {
-
-
 
   // ================
   // ROPE Modals
@@ -193,3 +181,4 @@ $x-modalFormat: 'marketo'; // 'rms', 'marketo', or 'rope'
 
 
 }
+

@@ -3,52 +3,54 @@
 // ================
 
 
-@mixin containerStyle ($_c-backgroundColor: $c-white) {
+@mixin containerStyle ($_c-backgroundColor: $c-white, $_x-border: "null", $_c-borderColor: "null") {
 	background: $_c-backgroundColor;
-	@include fluidRem("padding", 0.75rem 1rem, 1.5rem 1.75rem);
+	@include fluidRem("padding", 1rem 1.25rem, 1.75rem 2rem);
+
+	@if $_x-border == "yes" {
+		border: 1px solid $_c-borderColor;
+	}
 }
 
-@mixin addHighlight ($_c-bgColor: $c-teal, $_c-fontColor: $c-white) {
-	background: $_c-bgColor;
-	display: inline;
-	color: $_c-fontColor;
-	box-shadow: 10px 0 0 $_c-bgColor, -10px 0 0 $_c-bgColor;
-	box-decoration-break: clone;
-}
-
-@keyframes slideInLeft {
-  from {
-    -webkit-transform: translate3d(-100%, 0, 0);
-    transform: translate3d(-100%, 0, 0);
-    visibility: visible;
+@mixin headlineStyle ($_c-color: $c-gold) {
+	&::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 20%;
+    background: $_c-color;
+    margin: 0.75rem auto;
   }
+	letter-spacing: 0.15em;
+	
+	// @media (min-width: $mq-600) {
+	// 	display: table;
+	// 	text-align: center;
+	// 	position: relative;
+	// 	margin: 0 auto;
+	// 	padding: 0 1rem 1rem;
+	// 	max-width: 60%;
+	
+	// 	&::before,
+	// 	&::after {
+	// 		content: '';
+	// 		display: block;
+	// 		background: $_c-color;
+	// 		height: 1px;
+	// 		position: absolute;
+	// 		width: 3rem;
+	// 		transform: translate(0,-50%);
+	// 		top: 35%;
+	// 	}
 
-  to {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-}
+	// 	&::before {
+	// 		right: 100%;
+	// 		margin-right: 1rem;
+	// 	}
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@include keyframes(fadeInLeft) {
-  from {
-    opacity: 0;
-    -webkit-transform: translate3d(-2.5rem, 0, 0);
-    transform: translate3d(-2.5rem, 0, 0);
-  }
-
-  to {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
+	// 	&::after {
+	// 		left: 100%;
+	// 		margin-left: 1rem;
+	// 	}
+	// }
 }

@@ -1,37 +1,21 @@
-// ================
-// Buttons
-// ================
 
+@mixin buttonColor (
+  $_c-buttonColor: $c-storm,
+  $_c-buttonHoverColor: transparent,
+  $_c-buttonTextColor: $c-white,
+  $_c-buttonTextColorHover: $c-storm,
+  $_c-buttonBorderColorIntial: $c-storm,
+  $_c-buttonBorderColorHover: $c-storm) {
 
-@mixin buttonColor($_c-buttonColor, $_c-buttonTextColor, $_c-buttonBorderColor: "null", $_c-buttonFill: "true") {
-  $_c-buttonHoverColor: lighten($_c-buttonColor, 12%);
-  transition: all 0.25s ease-in-out;
-  border: 0;
-  outline: 0;
+  background: $_c-buttonColor;
+  color: $_c-buttonTextColor;
+  border: 1px solid $_c-buttonBorderColorIntial;
 
-  @if brightness($_c-buttonColor) > 50% {
-    $_c-buttonHoverColor: darken($_c-buttonColor, 10%);
-  }
-
-  @if $_c-buttonFill == "true" {
-    color: $_c-buttonTextColor;
-    background: $_c-buttonColor;
-
-    &:hover,
-    &:focus {
-      color: $_c-buttonTextColor;
-      background: $_c-buttonHoverColor;
-    }
-
-  } @else {
-    color: $_c-buttonColor;
-    border: 2px solid $_c-buttonBorderColor;
-
-    &:hover,
-    &:focus {
-      border-color: $_c-buttonColor;
-      // box-shadow: inset 0px 0px 0px 2px $_c-buttonColor;
-    }
+  &:hover,
+  &:focus {
+    background: $_c-buttonHoverColor;
+    color: $_c-buttonTextColorHover;
+    border: 1px solid $_c-buttonBorderColorHover;
   }
 
 }
@@ -41,25 +25,27 @@
 
 // Base Button Styles
 %button {
-  @include buttonColor($c-blue, $c-white, "null", "true");
-  @include fluidRem("font-size", 1rem, 1.15rem);
-  @include transition(all 0.25s ease-in-out);
+  @include buttonColor();
+  @include fluidRem("font-size", 0.78rem, 0.975rem);
+  transition: all 0.25s ease-in-out;
   display: block;
   width: 100%;
-  padding: 0.65em 1.25em;
+  padding: 0.65em 1.5em;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 0.03em;
   font-family: $f-headlineFont;
-  font-weight: bold;
-  border: 0;
-  border-radius: 4px;
-  letter-spacing: 0.01em;
+  border-radius: 0;
   outline: 0;
   line-height: 1.2;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-border-radius: 0;
 
-  @media (min-width: $mq-600) {
+  @media (min-width: $mq-400) {
     display: inline-block;
     width: auto;
   }
@@ -68,18 +54,17 @@
 
 // Major Buttons
 %major-button {
-  // @include buttonColor($c-lime, $c-purple, "null", "true");
+  @extend %button;
   @include fluidRem("font-size", 1.25rem, 1.5rem);
 }
 
 
 // Minor Buttons
 %minor-button {
-  // @include buttonColor($c-doveGrey, $c-white, "null", "true");
+  @include buttonColor();
   @include fluidRem("font-size", 0.78rem, 0.975rem);
-  padding: 0.35em 0.65em;
+  padding: 0.5em 1em;
 }
-
 
 // ================
 // Application of Placeholders
@@ -97,7 +82,6 @@ input[type=button] {
 button,
 a,
 input {
-
   &.button,
   .button & {
     @extend %button !optional;

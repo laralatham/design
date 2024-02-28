@@ -1,200 +1,172 @@
 // ================
-// Form Elements (Marketo)
+// Form Elements (ACS)
 // ================
 
 
+// ================
+// Form Fields
 
-// NOTE: To override Marketo's default form styles, we have to scope styles to form.mktoForm. Also, widths and font sizes are applied inline by Marketo, so they need to be flagged as !important in your CSS. These properties are called out throughout this file.
+// Base Form Field Styles
+%form-field {
+  width: 100%; // Do not edit
+  height: auto; // Do not edit
+  padding: 0.65rem 0.5rem;
+  border: 1px solid $c-black;
+  background: $c-white;
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-border-radius: 0;
 
-.lp-form-fields {
-  padding: 0 !important;
+  &:hover,
+  &:focus {
+    outline: none;
+  }
 }
 
-form.mktoForm {
+// Text-like Inputs
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=text],
+input[type=url] {
+  @extend %form-field !optional;
+}
 
-  // ================
-  // Form Fields
-
-  // Base Form Field Styles
-  %form-field {
-    width: 100% !important; // Do not edit
-    height: auto !important; // Do not edit
-    padding: .65em !important; // Can edit value, but keep !important
-    border: 1px solid $c-lightGrey;
-    background: $c-lightGrey;
-    font-size: 1rem !important; // Can edit value, but keep !important
-    line-height: 1.4;
-    transition: all 1s;
-    color: $c-black;
-
-    &:hover,
-    &:focus {
-      outline: none;
-      border: 1px solid $c-teal;
-      background: $c-white;
-    }
-
+// Telephone Inputs
+input[type=tel] {
+  @media (min-width: $mq-600) {
+    width: auto;
   }
+}
 
-  // Text-like Inputs
-  input[type=email],
-  input[type=number],
-  input[type=password],
-  input[type=tel],
-  input[type=text],
-  input[type=url] {
-    @extend %form-field !optional;
-    line-height: 1.4;
-  }
+// Textarea
+textarea {
+  @extend %form-field !optional;
+  overflow: auto; // Do not edit
+  resize: vertical; // Do not edit
+  min-height: 8em;
+}
 
-  // Telephone Inputs
-  input[type=tel] {
-    @media (min-width: $mq-600) {
-      width: auto !important; // Do not edit
-    }
-  }
+// Select (dropdown)
+select {
+  @extend %form-field !optional;
+  overflow: hidden;
+  height: 2.5em;
+}
 
-  // Textarea
-  textarea {
-    @extend %form-field !optional;
-    overflow: auto !important; // Do not edit
-    min-height: 8em;
-    resize: vertical !important; // Do not edit
-    line-height: 1.4;
-  }
+// Radio & Checkbox
+input[type=radio],
+input[type=checkbox] {
+  font-size: 1em;
+  float: left; // Do not edit
+  width: 1rem;
+  height: 1rem;
+  margin: .425em 0 0 0;
 
-  // Select (dropdown)
-  select {
-    @extend %form-field !optional;
-    overflow: hidden;
-    height: 2.85rem !important; // Can edit value, but keep !important
-    line-height: 1.4;
-  }
-
-  // Radio & Checkbox
-  input[type=radio],
-  input[type=checkbox] {
-    float: left !important; // Do not edit
-    width: 1em;
-    height: 1em;
-    margin: .325rem 0 0 0;
-
-    & ~ label {
-      display: block;
-      min-height: 0;
-      margin: 0;
-      padding: .3125em 0 .3125em 1.25rem;
-      cursor: pointer;
-      font-size: .9444em !important; // Can edit value, but keep !important
-      line-height: 1.2;
-    }
-  }
-
-  // Checkbox Styles
-  %checkbox-label {
-    padding-left: 1.5em;
-    cursor: pointer;
-    font-size: 0.9444rem;
-
-    ~ .mktoCheckboxList {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: auto !important; // Can edit value, but keep !important
-      padding: 0;
-    }
-
-  }
-
-  input[type=checkbox] {
-    margin-top: .1875em;
-  }
-
-  // Extend checkbox styles to checkbox questions 
-  label[for="cell_txt_opt_in"] {
-    @extend %checkbox-label;
-  }
-
-
-  // ================
-  // Styles Error Messages
-
-  .mktoError {
-
-    .mktoErrorMsg {
-      span {
-        font-weight: 600 !important;
-      }
-      
-    }
-
-    .mktoErrorArrow {
-      // Style the pointer arrow on the Marketo error tooltip
-    }
-
-  }
-
-
-  // ================
-  // Question Layout
-
-  // Labels
-  .mktoLabel {
+  & + label {
     display: block;
-    width: auto !important;
-    padding: 0 0 0.125em 0;
-    font-size: 1rem;
-    line-height: 1.4;
-
-    * {
-      padding: 0;
-    }
-
-  }
-
-  // Basic Question
-  .mktoFormRow {
-    display: block;
+    min-height: 0;
     margin: 0;
+    padding: .3125em 0 .3125em 1.25rem;
+    cursor: pointer;
+    font-size: .9444em;
+    line-height: 1.2;
+  }
+}
 
-    &:first-of-type .mktoFormCol {
-      margin-top: 0;
+
+// ================
+// Required Fields and Errors
+
+.mauticform-req-label{ 
+  font-weight: bold;
+}
+
+.mauticform-errormsg{
+  // Style the error message
+  background: $c-error;
+  color: #fff;
+  display: flex;
+  margin-top: .25rem;
+  padding: 0.35rem;
+  align-items: baseline;
+  font-size: 1rem;
+
+  &::before{
+    background: #fff;
+    content: '!';
+    color: $c-error;
+    border-radius: 100%;
+    font-weight: bold;
+    width: 1rem;
+    height: 1rem;
+    line-height: 1;
+    text-align: center;
+    margin-right: .35rem;
+    flex-shrink: 0;
+  }
+}
+
+
+// ================
+// Question Layout
+
+.mauticform-page-wrapper {
+  display: flex !important;
+  flex-wrap: wrap;
+  margin: -1rem -5% 0 0;
+}
+
+// Basic Question
+.mauticform-row {
+  display: block;
+  width: 100%;
+  margin: 1rem 5% 0 0;
+
+  @media(min-width: $mq-600) {
+
+    &.mauticform-row-partial-half {
+      width: 45%;
     }
 
-    &:last-of-type .mktoFormCol {
-      margin-bottom: 0;
+    &.mauticform-row-partial-third {
+      width: 28.333%;
     }
 
-    @media(min-width: $mq-600) {
-      display: flex;
+    &.mauticform-row-partial-quarter {
+      width: 20%;
     }
 
   }
-  .mktoButtonRow {
-    display: block;
-    margin: 1rem 0;
 
-    &:first-of-type {
-      margin-top: 0;
-    }
+}
 
-    &:last-of-type {
-      margin-bottom: 0.5rem;
-    }
+// Labels
+.mauticform-label {
+  display: block;
+  width: auto;
+  padding: 0 0 0.125em 0;
+  font-size: 1rem;
+  line-height: 1.4;
 
+  * {
+    padding: 0;
   }
-  .mktoFormCol {
-    margin: 1rem 0;
 
-    @media(min-width: $mq-600) {
-      flex: 1;
-      width: 100% !important;
+}
 
-      ~ .mktoFormCol {
-        margin-left: 1rem;
-      }
-    }
+// Buttons
+.mauticform-button-wrapper {
+  display: block;
+  margin: 1.5rem 5% 0 0;
 
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0.5rem;
   }
 
 }

@@ -13,7 +13,7 @@
     font-family: '#{$_f-fontFamily}';
     font-weight: $_f-fontWeight;
     font-style: $_f-fontStyle;
-    src: font-url('#{$_p-fileName}.woff') format('woff');
+    src: url('#{$_p-fileName}.woff') format('woff');
   }
 }
 
@@ -37,13 +37,13 @@
 
 @mixin backgroundImage($_p-img, $_p-ext: 'png', $_p-hiRes: '-2x', $_mq-hiResMin: 1.1) {
   background: {
-    image: image-url($_p-img + '.' + $_p-ext);
+    image: url($_p-img + '.' + $_p-ext);
     size: contain;
     repeat: no-repeat;
   };
 
   @include mres($_mq-hiResMin) {
-    background-image: image-url($_p-img + $_p-hiRes + '.' + $_p-ext);
+    background-image: url($_p-img + $_p-hiRes + '.' + $_p-ext);
   }
 }
 
@@ -185,22 +185,11 @@
 // Mixin: Creates a Flexbox-based "sticky" footer
 // More info: https://wiki.eab.com/display/RWD/stickyFooter%28%29+mixin
 
-@mixin stickyFooter($_x-content, $_x-wrapper: 'body', $_x-ieFix: 'false') {
-  @if $_x-ieFix == 'true' {
-    @at-root body{
-      position: relative;
-    }
-  }
-
+@mixin stickyFooter($_x-content, $_x-wrapper: 'body') {
   #{$_x-wrapper} {
     display: flex;
     flex-direction: column;
-
-    @if $_x-ieFix == 'true' {
-      height: 100vh;
-    } @else {
-      min-height: 100vh;
-    }
+    min-height: 100vh;
 
     & > * {
       flex-shrink: 0;

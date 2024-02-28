@@ -1,237 +1,632 @@
 @import "foundation/index";
 
+
+// ================
+// Landing Page Styles
+// ================
+
+// ================
 // Nav
 
-.top-nav {
-	border-top: 4px double $c-lightGrey;
-	// border-bottom: 4px double $c-lightGrey;
-	margin: 1rem auto 0;
+.main-nav {
+	@include fluidRem("padding", 1.5rem 0, 2rem 0);
+
+	ul {
+		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		justify-content: center;
+
+		li {
+			text-align: center;
+			list-style-type: none;
+
+			a {
+				color: $c-storm;
+				font-family: $f-headlineFont;
+				text-transform: uppercase;
+				letter-spacing: 0.04em;
+				@include fluidRem("font-size", 0.875rem, 0.9125rem);
+				text-decoration: none;
+				text-align: center;
+				@include fluidRem("padding", 0.25rem 0, 0.5rem 0);
+
+				&:hover,
+				&:focus {
+					color: $c-sky;
+					border-bottom: 3px solid $c-sky;
+				}
+			}
+		}
+	}
+
+	@media (min-width: $mq-600) {
+		ul {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+
 }
 
-.nav-links {
-	list-style-type: none;
-	margin: 0;
-	display: flex;
+
+// ================
+// About Me
+
+.lp-about {	
+	background: linear-gradient(0deg, transparent 0%, rgba(255,255,255,1) 100%), $c-white url('img/bg-icon-40.svg') repeat center / 2rem;
+	position: relative;
+	border-top: 1px solid $c-lightGrey;
+	padding: 5vw 0;
+	overflow: hidden;
+
+	>.center {
+		&::after {
+			content: '';
+			display: block;
+			background: url('img/lara-andy-crop.jpg') center 20% / cover;
+			height: 40vw;
+			min-height: 12rem;
+			width: 100%;
+			border: 1px solid $c-lightGrey;
+			margin: 2rem auto 0;
+		}
+	}
+
+	.lp-text-wrap {
+		padding: 2vw 0;
+		max-width: $mq-800;
+		margin: auto;
+	}
+
+	@media (min-width: $mq-600) {
+		>.center {
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			column-gap: 1rem;
+
+			&::after {
+				display: none;
+			}
+
+			&::before {
+				content: '';
+				display: block;
+				background: url('img/lara-andy-crop.jpg') center top / cover;
+				height: 100%;
+				width: 100%;
+				border: 1px solid $c-lightGrey;
+			}
+		}
+	}
+
+	@media (min-width: $mq-800) {
+
+		>.center {
+			column-gap: 3rem;
+		}
+	}
+}
+
+// Contact
+
+.lp-contact-options {
+	margin: 1rem 0 0;
 
 	li {
-		flex: 1 1 10%;
-		height: 100%;
+		list-style-type: none;
+
+		&.email,
+		&.resume {
+			a {
+				&::before {
+					font-family: $f-iconFont;
+					margin-right: 0.5rem;
+					display: inline-block;
+				}
+			}
+		}
+
+		&.email {
+			a {
+				&::before {
+					content: $i-envelope;
+				}
+			}
+		}
+
+		&.resume {
+			a {
+				&::before {
+					content: $i-cloudDownload;
+				}
+			}
+		}
+
+		.button {
+			@extend %minor-button;
+		}
+
+		~ li {
+			margin-top: 1rem;
+		}
+	}
+
+	@media (min-width: $mq-400) {
 		display: flex;
 
-		a {
-			text-decoration: none;
-			text-transform: uppercase;
-			display: block;
-			margin: auto;
-			width: 100%;
-			min-height: 100%;
-			text-align: center;
-			@include fluidRem("font-size", 0.875rem, 0.9375rem);
-			padding: 1rem 0.5rem;
-
-			.link-wrap {
-				display: inline-block;
-				border-bottom: 2px solid transparent;
-				transition: border 0.25s ease-in-out;
+		li {
+			~ li {
+				margin-top: 0;
+				margin-left: 1rem;
 			}
-
-			&:hover,
-			&:focus {
-				color: $c-gold;
-				
-				.link-wrap {
-					border-bottom-color: $c-gold;
-				}
-			}
-		}
-
-	}
-
-
-	
-}
-
-// Welcome
-.welcome {
-	background: image-url("img/img-welcome.jpg") no-repeat left 15% / cover;
-	padding: 6vw 0 8vw;
-
-	.group {
-		@include containerStyle(rgba($c-blue, .9));
-		width: 60%;
-		color: $c-white;
-
-		a {
-			color: $c-white;
-			font-weight: bold;
-
-			&:hover,
-			&:focus {
-				color: $c-gold;
-			}
-		}
-
-		h2 {
-			color: $c-white;
 		}
 	}
-	
 }
 
+// ================
+// Stats
 
-// Portfolio
-
-.portfolio {
+.lp-stats {
+	background: $c-storm linear-gradient(140deg, rgba(lighten($c-storm,2%),1) 0%, rgba(lighten($c-storm,2%),1) 20%, rgba($c-storm,1) 20%, rgba($c-storm,1) 75%, rgba(lighten($c-storm,2%),1) 75%, rgba(lighten($c-storm,2%),1) 100%);
 	padding: 4vw 0;
-	// background: $c-lightGrey;
+
+	.lp-stats-list {
+		margin: 0;
+		
+
+		li {
+			list-style-type: none;
+			color: $c-white;
+			text-align: center;
+			padding: 1rem;
+			display: grid;
+			grid-template-rows: 1fr 0.5fr;
+			grid-template-columns: 1fr;
+
+			&.stat-athlete,
+			&.stat-location {
+				&::before {
+					font-family: $f-iconFont;
+					@include fluidRem("font-size", 3.75rem, 7.5rem);
+					line-height: 1;
+					display: block;
+					margin: 0 auto;
+					color: $c-gold;
+				}
+			}
+			&.stat-athlete {
+				&::before {
+					content: $i-trophy;
+				}
+			} 
+
+			&.stat-location {
+				&::before {
+					content: $i-mapMarker;
+				}
+			}
+		}
+
+		@media (min-width: $mq-400) {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(2, 1fr);
+		}
+
+		@media (min-width: $mq-800) {
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-rows: 1fr;
+		}
+	}
 }
 
-.portfolio-group {
-	@extend %links;
-	margin-bottom: 3rem;
 
-	&.web-design {
-		ul {
+// ================
+// Projects
 
-			li {
+.lp-project {
+	background: linear-gradient(180deg, rgba($c-lightGrey,.5) 0%, rgba($c-white,1) 5%);
+	padding: 10vw 0 6vw;
+	border-top: 1px solid $c-lightGrey;
 
-				&:nth-child(1) {
-					a::before {
-						background: image-url("img/img-full-columbia.png") no-repeat center top / cover;
-					}
-				}
+	~ .lp-project {
+		padding: 10vw 0 12vw;
+	}
 
-				&:nth-child(2) {
-					a::before {
-						background: image-url("img/img-full-hastings.png") no-repeat center top / cover;
-					}
-				}
-
-				&:nth-child(3) {
-					a::before {
-						background: image-url("img/img-full-uccs-cg.png") no-repeat center top / cover;
-					}
-				}
-
-				&:nth-child(4) {
-					a::before {
-						background: image-url("img/img-full-mercer.png") no-repeat center top / cover;
-					}
-				}
-
-				&:nth-child(1),
-				&:nth-child(2),
-				&:nth-child(3),
-				&:nth-child(4) {
-					a {
-						&:hover,
-						&:focus {
-
-							&::before {
-								background-position: center bottom;
-							}
-						}
-					}
-				}
-			}
+	ul {
+		margin: 0;
+		
+		li {
+			list-style-type: none;
 		}
 	}
 
-	&.print-design {
-		ul {
-
-			li {
-
-				&:nth-child(1) {
-					a::before {
-						background: image-url("img/img-tb-menu.jpg") no-repeat center top / contain;
-					}
-				}
-
-				&:nth-child(2) {
-					a::before {
-						background: image-url("img/img-full-hastings.png") no-repeat center top / cover;
-					}
-				}
-
-				&:nth-child(3) {
-					a::before {
-						background: image-url("img/img-full-uccs-cg.png") no-repeat center top / cover;
-					}
-				}
-
-				&:nth-child(4) {
-					a::before {
-						background: image-url("img/img-full-mercer.png") no-repeat center top / cover;
-					}
-				}
-
-				&:nth-child(1),
-				&:nth-child(2),
-				&:nth-child(3),
-				&:nth-child(4) {
-					a {
-						&:hover,
-						&:focus {
-
-							&::before {
-								background-position: center bottom;
-							}
-						}
-					}
-				}
-			}
-		}
+	.lp-work-title {
+		color: $c-storm;
+		@include headlineStyle($c-gold);
 	}
 
-	&.interior-design {
-		ul {
+	.intro {
+		max-width: $mq-800;
+		margin: auto auto 3vw;
+		text-align: center;
+	}
 
-			li {
+	.item {
+		padding: 3vw 0 5vw;
 
-				&:nth-child(1) {
-					a::before {
-						background: image-url("img/img-full-columbia.png") no-repeat center top / cover;
-					}
-				}
+		~ .item {
+			margin-top: 4vw;
+			border-top: 1px solid $c-gold;
+			padding-top: 10vw;
+		}
 
-				&:nth-child(2) {
-					a::before {
-						background: image-url("img/img-full-hastings.png") no-repeat center top / cover;
-					}
-				}
-
-				&:nth-child(3) {
-					a::before {
-						background: image-url("img/img-full-uccs-cg.png") no-repeat center top / cover;
-					}
-				}
-
-				&:nth-child(4) {
-					a::before {
-						background: image-url("img/img-full-mercer.png") no-repeat center top / cover;
-					}
-				}
-
-				&:nth-child(1),
-				&:nth-child(2),
-				&:nth-child(3),
-				&:nth-child(4) {
-					a {
-						&:hover,
-						&:focus {
-
-							&::before {
-								background-position: center bottom;
-							}
-						}
-					}
-				}
-			}
+		&:last-of-type {
+			padding-bottom: 0;
 		}
 	}
 }
 
 
 
+// ================
+// Web Design Section
+
+.lp-web-design {
+
+	.item {
+		padding: 4vw 0;
+		text-align: center;
+
+		~ .item {
+			margin-top: 4vw;
+			border-top: 1px solid $c-gold;
+			padding-top: 10vw;
+		}
+
+		.web-item-wrap {
+
+			&::before {
+				content: '';
+				display: block;
+				width: 100%;
+				height: 55vw;
+				min-height: 25rem;
+				max-height: 45rem;
+				margin: auto auto 2rem;
+			}
+		}
+
+		&:nth-child(1) {
+			.web-item-wrap {
+				&::before,
+				&::after {
+					background: url("img/web/web-cornerstone-ipad.jpg") no-repeat center top / contain;
+				}
+			}
+		}
+
+		&:nth-child(2) {
+			.web-item-wrap {
+				&::before,
+				&::after {
+					background: url("img/web/web-columbiacollege-cg-ipad.jpg") no-repeat center top / contain;
+				}
+			}
+		}
+
+		&:nth-child(3) {
+			.web-item-wrap {
+				&::before,
+				&::after {
+					background: url("img/web/web-springfield-ipad.jpg") no-repeat center top / contain;
+				}
+			}
+		}
+
+		&:nth-child(4) {
+			.web-item-wrap {
+				&::before,
+				&::after {
+					background: url("img/web/web-msumadult-ipad.jpg") no-repeat center top / contain;
+				}
+			}
+		}
+
+		.button {
+			margin-bottom: 1rem;
+		}
+
+		@media (min-width: $mq-800) {
+			text-align: left;
+
+			.web-item-wrap {
+				display: grid;
+				grid-template-columns: 1fr 1.5fr;
+				column-gap: 2rem;
+			
+				.web-text-wrap {
+					padding: 2rem 0;
+				}
+
+				&::before {
+					display: none;
+				}
+
+				&::after {
+					content: '';
+					display: block;
+					width: 100%;
+					height: 55vw;
+					max-height: 45rem;
+					margin: auto;
+					background-position: left top;
+				}
+			}
+		}
+
+		@media (min-width: $mq-1000) {
+			.web-item-wrap {
+				display: grid;
+				grid-template-columns: 0.5fr 1.5fr 2fr 0.5fr;
+				column-gap: 2rem;
+			
+				.web-text-wrap {
+					padding: 4rem 0;
+					grid-column: 2 / 2;
+				}
+
+				&::after {
+					grid-column: 3 / 3;
+				}
+			}
+		}
+	}
+
+}
+
+// ================
+// Graphic Design Section
+
+// Wedding Stationery
+
+.print-list {
+	margin: 0;
+	
+	li {
+		list-style-type: none;
+		font-size: 0;
+		color: transparent;
+		min-height: 55vw;
+
+		~ li {
+			margin-top: 1rem;
+		}
+
+		&[id="la-wedding"] {
+			background: url("img/graphic/print-mywedding.jpg") no-repeat center / cover;
+		}
+
+		&[id="cl-wedding"] {
+			background: url("img/graphic/print-CL_wedding-sm.jpg") no-repeat center / cover;
+		}
+
+		&[id="aa-wedding"] {
+			background: url("img/graphic/print-AA_wedding-sm.jpg") no-repeat center / cover;
+		}
+
+		&[id="wheaton"] {
+			background: url("img/graphic/wheaton_brochure.jpg") no-repeat center / cover;
+		}
+	}
+
+	@media (min-width: $mq-1100) {
+		display: grid;
+		grid-template-columns: 2fr 1.25fr;
+		// grid-template-columns: 1fr 1fr;
+		grid-template-rows: 1.5fr 0.5fr 0.5fr;
+		grid-gap: 1rem;
+
+		li {
+			min-height: 30rem;
+			
+			~ li {
+				margin-top: 0;
+			}
+
+			&[id="la-wedding"] {
+				grid-column: 1 / 3;
+			}
+
+			&[id="cl-wedding"] {
+				background: url("img/graphic/print-CL_wedding.jpg") no-repeat center / cover;
+				grid-column: 2 / 3;
+				grid-row: 2 / 4;
+			}
+
+			&[id="wheaton"] {
+				// grid-column: 1 / 3;
+			}
+		}
+	}
+}
+
+// Logos & Branding
+
+.branding-list {
+	
+	li {
+		font-size: 0;
+		color: transparent;
+		text-align: center;
+		border: 1px solid $c-lightGrey;
+		width: 100%;
+
+		~ li {
+			margin-top: 1rem;
+		}
+
+		img {
+			text-align: center;
+			margin: auto;
+		}
+	}
+
+	@media (min-width: $mq-600) {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(2, 1fr);
+		grid-gap: 1rem;
+
+		li {
+			display: flex;
+			margin: auto;
+
+			~ li {
+				margin-top: 0;
+			}
+		}
+	}
+}
+
+// ================
+// Interior Design Section
+
+.lp-interior-design {
+
+	.interior-list {
+		margin: 1rem;
+
+		li {
+			text-align: left;
+			position: relative;
+
+			~ li {
+				margin-top: 1.5rem;
+			}
+
+			.tag {
+				display: inline-block;
+				margin: 0 0 0 auto;
+				background: rgba($c-white, .5);
+				padding: 0.35rem 1.25rem;
+				font-family: $f-headlineFont;
+				text-transform: uppercase;
+				letter-spacing: 0.15em;
+				font-size: 0.9em;
+				position: absolute;
+				right: 0;
+				top: 0;
+				color: $c-sky;
+			}
+
+			a {
+				display: block;
+				width: 100%;
+				min-height: 25rem;
+				height: 50vw;
+				max-height: 44rem;
+
+				&:hover,
+				&:focus {
+					box-shadow: 0 0 8px 0 rgba($c-black, .5);
+
+					.tag {
+						box-shadow: none;
+						color: $c-sky;
+					}
+				}
+			}
+		}
+
+		&.ece {
+			.before {
+				a {
+					background: url("img/interior/ece_before.jpg") no-repeat center 90% / cover;
+				}
+			}
+
+			.after {
+				a {
+					background: url("img/interior/ece_after.jpg") no-repeat 60% bottom / cover;
+				}
+			}
+		}
+
+		&.guest {
+			.before {
+				a {
+					min-height: 40rem;
+					background: url("img/interior/guest_bed_before.jpg") no-repeat center / cover;
+				}
+			}
+
+			.after {
+				a {
+					min-height: 40rem;
+					background: url("img/interior/guest_bed_after2.jpg") no-repeat center center / cover;
+				}
+			}
+		}
+
+		&.lounge {
+			.before {
+				a {
+					background: url("img/interior/lounge_before.jpg") no-repeat center / cover;
+				}
+			}
+
+			.after {
+				a {
+					background: url("img/interior/lounge_after.jpg") no-repeat center / cover;
+				}
+			}
+		}
+
+		&.main {
+			.before {
+				a {
+					min-height: 30rem;
+					background: url("img/interior/main_bed_before.jpg") no-repeat center bottom/ cover;
+				}
+			}
+
+			.after {
+				a {
+					min-height: 30rem;
+					background: url("img/interior/main_bed_after.jpg") no-repeat 15% center / cover;
+				}
+			}
+		}
+
+		@media (min-width: $mq-1000) {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 1rem;
+
+			&.ece,
+			&.lounge {
+				.before,
+				.after {
+					a {
+						height: 35vw;
+					}
+				}
+			}
+
+			li {
+				text-align: center;
+
+				~ li {
+					margin-top: 0;
+					
+				}
+
+				// &::after {
+				// 	height: 50vw;
+				// }
+			}
+		}
+	}
+}
 

@@ -25,7 +25,7 @@
 @mixin center($_maxWidth: $mq-1200, $_width: 90%) {
   width: $_width;
   max-width: $_maxWidth;
-  margin: 0 auto;
+  margin: auto;
 }
 
 %center,
@@ -37,7 +37,11 @@
 	transition: all 0.25s ease-in-out;
 }
 
-@include stickyFooter(".page-wrap");
+.mob-hide {
+  @media (max-width: maxMQ($mq-600)) {
+    display: none;
+  }
+}
 
 // ================
 // Major Layout Elements
@@ -46,7 +50,7 @@
   display: block;
   margin: 0 auto;
   text-indent: -9999em;
-  text-align: center;
+  color: $c-black;
 
   &::after {
   	display: none;
@@ -55,127 +59,87 @@
 
 .logo {
 	@extend %logo;
-	@include fluidRem("width", 10rem, 15rem);
-	@include fluidRem("height", 3.3125rem, 4.95rem);
-	background: image-url("img/laralatham-logo2.svg") no-repeat center center / contain;
+  @include fluidRem("width", 15rem, 18.75rem);
+  @include fluidRem("height", 5.45rem, 6.8125rem);
+  background: url("img/laralatham-logo.svg") no-repeat center center / contain;
 }
-
 
 // Header
 
 .header {
-	@include fluidRem("padding", 1.5rem 0 0, 2rem 0 0);
-
-	.tagline {
-		text-align: center;
-		@include fluidRem("padding", 1rem 0 0.5rem, 1.5rem 0 0.5rem);
-		color: $c-blue;
-	}
+	@include fluidRem("padding", 1rem 0, 2rem 0);
 }
+
 
 // Footer
 
 .footer {
-	background: $c-white;
+  background: $c-storm;
+  color: $c-white;
 	@include fluidRem("padding", 1rem 0, 1.5rem 0);
-
-	.footer-content {
-
-		address {
-			margin-top: 1rem;
-			color: $c-blue;
-			font-size: 0.9375rem;
-			text-align: center;
-		}
-	}
+  text-align: center;
 
 	.footer-links {
-		
-	}
-}
-
-%links {
-	margin-bottom: 3rem;
-
-	h3 {
-		border-bottom: 4px double $c-lightGrey;
-	}
-
-	ul {
-		margin: 0;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
+    margin: 0.5rem auto 0;
+    display: flex;
+    justify-content: center;
 
 		li {
 			list-style-type: none;
-			flex: 1 1 45%;
-			margin: 1rem;
 
-			a {
-				display: block;
-				width: 100%;
-				text-align: center;
-				padding: 1rem;			
-				@include fluidRem("font-size", 1rem, 1.125rem);
+      ~ li {
+        margin-left: 1rem;
+      }
 
-				&::before {
-					content: '';
-					display: block;
-					width: calc(100% + 2rem);
-					height: 40vw;
-					max-height: 22rem;
-					margin: -1rem 0 0.75rem -1rem;
-					border: 1px solid $c-grey;
-					border-bottom: 1px solid $c-grey;
-					transition: background-position 4s ease-in-out;
-					box-shadow: 0px 0px 8px 0px rgba($c-grey, .5);
-				}
+      a {
+        color: transparent;
+        text-decoration: none;
+        font-size: 0;
 
-				.icon-wrap {
-					&::after {
-						content: $i-arrowRight;
-						font-family: $f-iconFont;
-						color: $c-teal;
-						position: absolute;
-						margin-top: .125rem;
-						margin-left: 0.5rem;
-					}
-				}
-			}
+        .link-text {
+          display: none;
+        }
+        
+        &::before {
+          height: auto;
+          width: auto;
+          color: $c-white;
+          font-family: $f-iconFont;
+          display: block;
+          @include fluidRem("font-size", 1.25rem, 2rem);
+        }
 
-			&:nth-child(1),
-			&:nth-child(2),
-			&:nth-child(3),
-			&:nth-child(4) {
-				a {
-					&:hover,
-					&:focus {
+        &.link-instagram {
+          &::before {
+            content: $i-instagram;
+          }
+        }
 
-						.icon-wrap {
-							&::after {
-								color: $c-gold;
-							}
-						}
+        &.link-linkedin {
+          &::before {
+            content: $i-linkedin;
+          }
+        }
 
-						&::before {
-							box-shadow: 0px 0px 10px 1px rgba($c-grey, .75);
-						}
-					}
-				}
-			}
-		}
-
-		@media (min-width: $mq-1400) {
-			li {
-
-				a {
-					&::before {
-						height: 20vw;
-						max-height: auto;
-					}
-				}
-			}
+        &:hover,
+        &:focus {
+          &::before {
+            color: $c-gold;
+          }
+        }
+      }
 		}
 	}
+
+  @media (min-width: $mq-400) {
+    .footer-content {
+      display: flex;
+      align-items: center;
+
+      .footer-links {
+        margin: 0 0 0 auto;
+      }
+    }
+  }
 }
+

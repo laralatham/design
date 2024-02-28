@@ -3,8 +3,7 @@
 // ================
 
 // Imports third-party code
-@import "compass",
-        "vendor/reset",
+@import "vendor/reset",
         "vendor/royall";
 
 // Imports configuration settings (fonts, colors, variables, etc.)
@@ -15,7 +14,4 @@
         "global/type",
         "global/forms",
         "global/buttons",
-        "global/layout",
-        "global/ceeb",
-        "global/modals",
-        "global/otherinfo";
+        "global/layout";

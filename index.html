@@ -1,160 +1,222 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="">
 
 <head>
-  <title>Lara Latham</title>
-
-	<!-- Meta Tags -->
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Lara Latham</title>
+  <meta name="description" content="Web and Graphic Design Portfolio">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
 
   <!-- Favicon -->
-  <link href="img/favicon.ico" rel="shortcut icon">
+  <link href="favicon.ico" rel="shortcut icon" />
+  <link rel="apple-touch-icon" href="icon.png">
 
   <!-- Styles -->
-  <link href="style.css" rel="stylesheet" togglelocal="true">
-
-  <!-- Fonts -->
-  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700&display=swap" rel="stylesheet"> -->
-
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/lightbox.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
-  <div class="page-wrap">
-    <!-- <header role="banner" class="header"> -->
-      <!-- <div class="center"> -->
-        <!-- <div class="header-content">
-          <div class="logo-container">
-            <div class="center">
-              <h1 class="logo" role="img">Lara Latham</h1>
-            </div>
-          </div>
-          <div class="nav-wrap">
-            <nav class="top-nav">
-              <ul class="header-links nav-links">
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#about">About Lara</a></li> -->
-                <!-- <li><a href="#">Design Services</a></li> -->
-                <!-- <li><a href="#">Wake Surfing</a></li> -->
-                <!-- <li><a href="#contact">Get in Touch</a></li>
-              </ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </header> -->
+  <header class="header" role="heading">
+    <div class="center header-wrapper">
+      <h1 class="logo">Lara Latham</h1>
+    </div>
+  </header>
 
-    <header role="banner" class="header">
-      <div class="header-content">
-        <div class="center">
-          <div class="logo-container">
-            <h1 class="logo" role="img">Lara Latham</h1>
-          </div>
-          <div class="tagline">
-            <small>Professional graphic designer, web designer, and interior designer by week. Professional wake surfer by weekend.</small>
-          </div>
-        </div>
-      </div>
+  <nav class="main-nav" role="navigation">
+    <div class="center">
+      <ul>
+        <li class="mob-hide"><a href="#about">About</a></li>
+        <li><a href="#webDesign">Web <span class="mob-hide">Design</span></a></li>
+        <li><a href="#graphicDesign">Graphic <span class="mob-hide">Design</span></a></li>
+        <li><a href="#interiorDesign">Interior <span class="mob-hide">Design</span></a></li>
+      </ul>
+    </div>
+  </nav>
 
-      <nav class="top-nav">
-        <div class="center">
-          <ul class="header-links nav-links">
-            <li><a href="#services"><span class="link-wrap">Services</span></a></li>
-            <li><a href="#portfolio"><span class="link-wrap">Portfolio</span></a></li>
-            <li><a href="#about"><span class="link-wrap">About Lara</span></a></li>
-            <!-- <li><a href="#">Design Services</a></li> -->
-            <!-- <li><a href="#">Wake Surfing</a></li> -->
-            <li><a href="#contact"><span class="link-wrap">Get in Touch</span></a></li>
+  <!-- About -->
+  <section class="lp-about-stats" id="about">
+    <div class="lp-about">
+      <div class="center">
+        <div class="lp-text-wrap">
+          <h2>About Me</h2>
+          <p>Currently based in Charlotte, North Carolina, I am an experienced professional web and graphic designer with front end development capabilities and a flair for interior design. When I'm not coding or designing, I love working on DIY home projects or spending time on the lake with friends, trying to land a new wake surfing trick.</p>
+          <ul class="lp-contact-options">
+            <li class="contact-item email"><a href="mailto:wakesurflara@gmail.com" target="_blank" class="button">Email Me</a></li>
+            <li class="contact-item resume"><a href="docs/LaraLatham_Resume.pdf" target="_blank" class="button">Download My Resume</a></li>
           </ul>
         </div>
-      </nav>
-    </header>
+      </div>
+    </div>
+    <div class="lp-stats">
+      <div class="center">
+        <ul class="lp-stats-list">
+          <li class="stat-design"><span class="graphic"><span class="graphic-lg">10+</span><span class="graphic-sm">Years</span></span><span class="desc">of Design Experience<span</li>
+          <li class="stat-web"><span class="graphic"><span class="graphic-lg">6+</span><span class="graphic-sm">Years</span></span><span class="desc">of Front-End Development<span</li>
+          <li class="stat-web"><span class="graphic"><span class="graphic-lg">250+</span><span class="graphic-sm">Webpages</span></span><span class="desc">Designed and Built<span</li>
+          <li class="stat-web"><span class="graphic"><span class="graphic-lg">10+</span><span class="graphic-sm">Interiors</span></span><span class="desc">Redesigned and Installed<span</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <main>
-      <section id="services" class="welcome">
-        <div class="center">
-          <div class="welcome-inner">
-            <div class="group">
-              <h2>Welcome!</h2>
-              <p>Lara specializes in all things design! She loves new challenges as well as being out on the water wake surfing with her family! If you have a need for any of these available services, please <a href="#contact">contact her today</a>!</p>
-              <ul>
-                <li>Print & Web Design</li>
-                <li>Branding & Marketing</li>
-                <li>Interior Design</li>
-                <li>Home Staging</li>
-                <li>Wake Surfing Lessons</li>
-              </ul>          
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="portfolio" class="portfolio">
-        <div class="center">
-          <div class="web-design portfolio-group">
-            <h2>Recent Work</h2>
-            <h3>Web Design</h3>
-            <ul>
-              <li><a href="https://go.columbiacollegescdegree.org/apply.html" target="_blank"><span class="icon-wrap">View Entire Landing Page</span></a></li>
-              <li><a href="https://go.columbiacollegescdegree.org/apply.html" target="_blank"><span class="icon-wrap">View Entire Landing Page</span></a></li>
-              <li><a href="https://go.columbiacollegescdegree.org/apply.html" target="_blank"><span class="icon-wrap">View Entire Landing Page</span></a></li>
-              <li><a href="https://go.columbiacollegescdegree.org/apply.html" target="_blank"><span class="icon-wrap">View Entire Landing Page</span></a></li>
-            </ul>
-          </div>
-          <div class="print-design portfolio-group">
-            <h3>Print Design</h3>
-            <ul>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-            </ul>
-          </div>
-          <div class="interior-design portfolio-group">
-            <h3>Interior Design</h3>
-            <ul>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-            </ul>
-          </div>
-          
-        </div>
-      </section>
-      <section id="about" class="about"> 
-        <div class="center">
-          
-          
-        </div>
-      </section>
-      <section id="contact" class="contact">
-        <div class="center">
+  <!-- Web Design -->
+  <section class="lp-web-design lp-project" id="webDesign">
+    <div class="center">
+      <div class="intro">
+        <h3 class="lp-work-title">Web Design</h3>
+      </div>
+      <ul>
+        <li class="item">
+          <span class="web-item-wrap">
+            <span class="web-text-wrap">
+              <h5 class="item-title">Robust Content Landing&nbsp;Page</h5>
+              <p>The client wanted to showcase an abundance of information to the user, including their credibility and rankings, student testimonials, and programmatic information. I collaborated with the client and a copywriter to produce this page's content.</p>
+              <a href="img/web/web-cornerstone-full.jpg" class="button" target="_blank">View Entire Page</a>
+            </span>
+          </span>
+        </li>
+        <li class="item">
+          <span class="web-item-wrap">
+            <span class="web-text-wrap">
+              <h5 class="item-title">Content Give (Offer)-Focused Landing&nbsp;Page</h5>
+              <p>This was one of several landing pages created for this client's campaign. This page encourages the user to fill out the form and download a PDF offer. Additional information about the institution and the option to apply are also present on this page. I worked with a copywriter for content and a print designer for the offer&nbsp;preview.</p>
+              <a href="img/web/web-columbiacollege-cg-full.jpg" class="button" target="_blank">View Entire Page</a>
+            </span>
+          </span>
+        </li>
+        <li class="item">
+          <span class="web-item-wrap">
+            <span class="web-text-wrap">
+              <h5 class="item-title">Apply-Focused Landing&nbsp;Page</h5>
+              <p>This was one of several landing pages created for this client’s marketing campaign. Following the visual hierarchy of this page, the primary call-to-action is the apply section at the top, followed next by the deferral form, and lastly by informational links about the institution. This project was completed with a&nbsp;copywriter.</p>
+              <a href="img/web/web-springfield-full.jpg" class="button" target="_blank">View Entire Page</a>
+            </span>
+          </span>
+        </li>
+        <li class="item">
+          <span class="web-item-wrap">
+            <span class="web-text-wrap">
+              <h5 class="item-title">Paid Search Landing&nbsp;Page</h5>
+              <p>Several landing pages were created for this marketing campaign. This paid search landing page was created as a destination for Google paid search ads, with a primary focus on the inquiry form. This suite of work was crafted with the help from a digital marketing strategist and a copywriter.</p>
+              <a href="img/web/web-msumadult-full.jpg" class="button" target="_blank">View Entire Page</a>
+            </span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </section>
 
+  <!-- Graphic Design -->
+  <section class="lp-graphic-design lp-project" id="graphicDesign">
+    <div class="center">
+      <div class="intro">
+        <h3 class="lp-work-title">Graphic & Print Design</h3>
+      </div>
+      <div class="item print">
+        <div class="text-wrap">
+          <h5>Wedding Stationery & Brochure Design</h5>
         </div>
-      </section>
-      
-    </main>
-  </div>
-
-  <footer role="contentinfo" class="footer">
-		<div class="footer-wrapper center">
-			<div class="footer-content">
-        <div class="logo-container">
-          <h1 class="logo" role="img">Lara Latham</h1>
+        <ul class="print-list">
+          <li id="la-wedding">Lara & Andy Wedding Stationery</li>
+          <li id="cl-wedding">Courtney & Lance Wedding Stationery</li>
+          <li id="aa-wedding">Amanda & Adam Wedding Stationery</li>
+          <li id="wheaton">Amanda & Adam Wedding Stationery</li>
+        </ul>
+      </div>
+      <div class="item branding">
+        <div class="text-wrap">
+          <h5>Logos & Branding</h5>
         </div>
-				<address class="footer-address">Mechanicsville, Virginia, USA</address>
-			</div>
-			
-		</div>
-	</footer>
+        <ul class="branding-list">
+          <li id="henfest"><img src="img/graphic/logo-henfest.svg" alt="Henfest logo">Henfest</li>
+          <li id="athena"><img src="img/graphic/logo-athena.svg" alt="Athena Construction logo">Athena Construction</li>
+          <li id="clarkshill"><img src="img/graphic/logo-clarkshill.svg" alt="Clarks Hill Wake Surf Open logo">Clarks Hill Wake Surf Open</li>
+          <li id="bigtimber"><img src="img/graphic/logo-bigtimber.svg" alt="Big Timber Custom Bows logo">Big Timber Bows Custom Bows</li>
+          <li id="eved"><img src="img/graphic/logo-eved.svg" alt="Eved Payments logo">Eved Payments</li>
+          <li id="bikesburg"><img src="img/graphic/logo-bikesburg.svg" alt="Bikesburg logo">Bikesburg</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
+  <!-- Interior Design -->
+  <section class="lp-interior-design lp-project" id="interiorDesign">
+    <div class="center">
+      <div class="intro">
+        <h3 class="lp-work-title">Interior Design</h3>
+      </div>
+      <div class="item interior">
+        <div class="text-wrap">
+          <h5>Office To Employee Lounge</h5>
+          <p>Brief: Reconfigure an unused office space in the ECE corporate office to an employee lounge that could also be used to meet with potential clients.</p>
+          <p>While working on a small budget, I created a fun and dyanmic space that was reflective of the brand's colors and the atmosphere of this entertainment company. I utilized their proprietary photos for the artwork, and added a cling logo to the window that could be viewed from the hallway. I painted the accent wall and installed this space with the help of my amazing husband.</p>
+        </div>
+        <ul class="interior-list ece">
+          <li class="before"><a href="img/interior/ece_before.jpg" data-lightbox="ece" data-title="ECE Office Before"><span class="tag">Before</span></a></li>
+          <li class="after"><a href="img/interior/ece_after.jpg" data-lightbox="ece" data-title="ECE Office Before"><span class="tag">After</span></a></li>
+        </ul>
+      </div>
+      <div class="item guest">
+        <div class="text-wrap">
+          <h5>Guest Bedroom Redesign</h5>
+          <p>Brief: Upgrade from a full size to queen size bed. Needs to be more functional and spacious, and provide a relaxing environment for guests.</p>
+          <p>Because the budget was tight, I created this accent wall myself, and sourced more inexpensive furniture and decor items to create a beautiful result for less.</p>
+        </div>
+        <ul class="interior-list guest">
+          <li class="before"><a href="img/interior/guest_bed_before.jpg" data-lightbox="guest-bed" data-title="Guest Bedroom Before"><span class="tag">Before</span></a></li>
+          <li class="after"><a href="img/interior/guest_bed_after2.jpg" data-lightbox="guest-bed" data-title="Guest Bedroom Before"><span class="tag">After</span></a></li>
+        </ul>
+      </div>
+      <div class="item lounge">
+        <div class="text-wrap">
+          <h5>Dining Room To Lounge</h5>
+          <p>Brief: Reconfigure this existing dining room into a functional room for these homeowners.</p>
+          <p>Utilizing the function of the existing butler's pantry in this space, I decided to create a dark, moody lounge for my clients where they could play board games, have a drink, and socialize with friends.</p>
+        </div>
+        <ul class="interior-list lounge">
+          <li class="before"><a href="img/interior/lounge_before.jpg" data-lightbox="lounge" data-title="Lounge Before"><span class="tag">Before</span></a></li>
+          <li class="after"><a href="img/interior/lounge_after.jpg" data-lightbox="lounge" data-title="Lounge After"><span class="tag">After</span></a></li>
+        </ul>
+      </div>
+      <div class="item main">
+        <div class="text-wrap">
+          <h5>Main Bedroom Flourish</h5>
+          <p>Brief: Work with owners' existing furniture and layout to create a luxurious, relaxing sanctuary.</p>
+          <p>Created visual consistency throughout their house utlizing a paint color used elsewhere and added accent picture frame moulding on each wall, laid out in a way that would frame applicable pieces. Added long draping blackout curtains to frame their giant window, but kept all existing furniture.</p>
+        </div>
+        <ul class="interior-list main">
+          <li class="before"><a href="img/interior/main_bed_before.jpg" data-lightbox="main-bed" data-title="Main Bedroom Before"><span class="tag">Before</span></a></li>
+          <li class="after"><a href="img/interior/main_bed_after.jpg" data-lightbox="main-bed" data-title="Main Bedroom After"><span class="tag">After</span></a></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+  </section>
   
-</footer>
+  <footer class="footer">
+    <div class="footer-wrapper center">
+      <div class="footer-content">
+        <div class="footer-name"><small>© 2021 Lara Latham. All rights reserved.</small></div>
+        <ul class="footer-links">
+          <li><a href="https://www.instagram.com/laralatham/" class="link-instagram" target="_blank"><span class="link-text">Instagram</span></a></li>
+          <li><a href="https://www.linkedin.com/in/laralatham" class="link-linkedin" target="_blank"><span class="link-text">LinkedIn</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/lightbox-plus-jquery.js"></script>
+
 </body>
 
 </html>
